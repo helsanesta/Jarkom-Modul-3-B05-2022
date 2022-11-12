@@ -321,5 +321,137 @@ Loid dan Franky berencana menjadikan Eden sebagai server untuk pertukaran inform
   ![image](https://user-images.githubusercontent.com/70515589/200474142-afedccdf-98eb-40de-9486-8fe3b432a122.png)
 
   
+## --Proxy--
+### No 1
+Client hanya dapat mengakses internet diluar (selain) hari & jam kerja (senin-jumat 08.00 - 17.00) dan hari libur (dapat mengakses 24 jam penuh)
+
+#### Langkah Penyelesaian
+- Berlint
+    - Install squid dengan command `apt-get install squid`
+    - Buat backup file konfigurasi squid dengan command `mv /etc/squid/squid.conf /etc/squid/squid.conf.bak`
+    - buat file konfigurasi acl dengan dir `/etc/squid/acl.conf` yang berisi berikut.
+    ```
+    acl WORKING time MTWHF 08:00-17:00
+    ```
+    - buat konfigurasi squid baru dengan dir `/etc/squid/squid.conf` yang berisi kode berikut.
+    ```
+    include /etc/squid/acl.conf
+
+    http_port 8080
+    visible_hostname Berlint
+
+    http_access deny WORKING
+    http_access allow all
+    ```
+    - restart squid dengan command `service squid restart`
+- SSS/Garden/Eden
+    - aktifkan proxy dengan command `export http_proxy=”http://192.175.2.3:8080”`
+    - Ubah waktu menjadi waktu jam kerja, contoh `date -s “7 nov 2022 13:00”`. Lalu test dengan command `lynx google.com`
+    [image]
+    - Ubah waktu menjadi waktu non jam kerja, contoh `date -s “7 nov 2022 18:00”`. Lalu test dengan command `lynx google.com`
+    [image]
+
+### No 2
+Adapun pada hari dan jam kerja sesuai nomor (1), client hanya dapat mengakses domain loid-work.com dan franky-work.com (IP tujuan domain dibebaskan)
+
+#### Langkah Penyelesaian
+- Wise
+    - Buat domain `loid-work.com` dan `franky-work.com` dengan menambahkan kode berikut ke `/etc/bind/named.conf.local`
+    ```
+    zone "loid-work.com" {
+    	type master;
+    	file "/etc/bind/jarkom/loid-work.com";
+    };
+    zone "franky-work.com" {
+    	type master;
+    	file "/etc/bind/jarkom/franky-work.com";
+    };
+    ```
+    - Buat dir `/etc/bind/jarkom/` dengan menggunakan `mkdir /etc/bind/jarkom/`
+    - Buat file konfigurasi `/etc/bind/jarkom/loid-work.com` sebagai berikut.
+    ```
+    $TTL	604800
+    @	IN	SOA	loid-work.com.	root.loid-work.com. (
+    			     1		; Serial
+    			604800		; Refresh
+    			 86400		; Retry
+    		   2419200		; Expire
+    			604800 )	; Negative Cache TTL
+    ;
+    @	IN	NS	    loid-work.com.
+    @	IN 	A	    192.75.2.2
+    @	IN	AAAA	::1
+    www IN 	CNAME 	loid-work.com.
+    ```
+    - Buat file konfigurasi `/etc/bind/jarkom/franky-work.com` sebagai berikut.
+    ```
+    $TTL	604800
+    @	IN	SOA	franky-work.com.	root.franky-work.com. (
+    			     1			; Serial
+    			604800			; Refresh
+    			 86400			; Retry
+    		   2419200			; Expire
+    			604800 )		; Negative Cache TTL
+    ;
+    @	IN	NS	    franky-work.com.
+    @	IN 	A	    192.75.2.2
+    @	IN	AAAA	::1
+    www IN 	CNAME 	franky-work.com.
+    ```
+    - Restart bind9 dengan command `service bind9 restart`
+- Berlint
+    - Buat file acl `/etc/squid/work-sites.acl` sebagai berikut.
+    ```
+    loid-work.com
+    franky-work.com
+    ```
+    - Ubah konfigurasi squid menjadi sebagai berikut.
+    ```
+    include /etc/squid/acl.conf
+
+    http_port 8080
+    visible_hostname Berlint
+
+    acl WORKSITES dstdomain "/etc/squid/work-sites.acl"
+    http_access allow WORKSITES
+    http_access deny WORKING
+    http_access allow all
+    ```
+    - Restart squid dengan command `service squid restart`
+- SSS/Garden/Eden
+    - aktifkan proxy dengan command `export http_proxy=”http://192.175.2.3:8080”`
+    - Ubah waktu menjadi waktu jam kerja, contoh `date -s “7 nov 2022 13:00”`
+    - Test `lynx google.com`
+    [image]
+    - Test `lynx loid-work.com`
+    [image]
+    - Test `lynx franky-work.com`
+    [image]
+### No 3
+Saat akses internet dibuka, client dilarang untuk mengakses web tanpa HTTPS. (Contoh web HTTP: http://example.com)
+
+#### Langkah Penyelesaian
+- Berlint
+    - Ubah konfigurasi squid menjadi sebagai berikut
+    ```
+    include /etc/squid/acl.conf
+
+    http_port 8080
+    visible_hostname Berlint
+
+    acl SSL_ports port 443
+    acl WORKSITES dstdomain "/etc/squid/work-sites.acl"
+    http_access deny !SSL_ports
+    http_access allow WORKSITES
+    http_access deny WORKING
+    http_access allow all
+    ```
+- SSS/Garden/Eden
+    - Aktifkan proxy dengan command `export http_proxy=”http://192.175.2.3:8080”`
+    - Ubah waktu menjadi waktu non jam kerja, contoh `date -s “7 nov 2022 18:00”`
+    - Test `lynx http://example.com`
+    [image]
+    - Test `lynx https://example.com`
+    [image]
   
 
