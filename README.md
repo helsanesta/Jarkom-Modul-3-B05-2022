@@ -347,9 +347,9 @@ Client hanya dapat mengakses internet diluar (selain) hari & jam kerja (senin-ju
 - SSS/Garden/Eden
     - aktifkan proxy dengan command `export http_proxy=”http://192.175.2.3:8080”`
     - Ubah waktu menjadi waktu jam kerja, contoh `date -s “7 nov 2022 13:00”`. Lalu test dengan command `lynx google.com`
-    [image]
+    ![image](https://user-images.githubusercontent.com/100585249/201473584-3e300033-2fbc-49e3-b037-6cf09f0d9dbd.png)
     - Ubah waktu menjadi waktu non jam kerja, contoh `date -s “7 nov 2022 18:00”`. Lalu test dengan command `lynx google.com`
-    [image]
+    ![image](https://user-images.githubusercontent.com/100585249/201473612-bba03992-daf9-400b-a682-e8fa3243d0c9.png)
 
 ### No 2
 Adapun pada hari dan jam kerja sesuai nomor (1), client hanya dapat mengakses domain loid-work.com dan franky-work.com (IP tujuan domain dibebaskan)
@@ -422,11 +422,11 @@ Adapun pada hari dan jam kerja sesuai nomor (1), client hanya dapat mengakses do
     - aktifkan proxy dengan command `export http_proxy=”http://192.175.2.3:8080”`
     - Ubah waktu menjadi waktu jam kerja, contoh `date -s “7 nov 2022 13:00”`
     - Test `lynx google.com`
-    [image]
+    ![image](https://user-images.githubusercontent.com/100585249/201473710-96718ecc-b7fd-4730-9aa1-959662c268fd.png)
     - Test `lynx loid-work.com`
-    [image]
+    ![image](https://user-images.githubusercontent.com/100585249/201473745-0d683bb0-f41c-4935-85f8-ab71816fbc9d.png)
     - Test `lynx franky-work.com`
-    [image]
+    ![image](https://user-images.githubusercontent.com/100585249/201473757-bffb3b18-02da-44c3-a36b-6cc59756c332.png)
 ### No 3
 Saat akses internet dibuka, client dilarang untuk mengakses web tanpa HTTPS. (Contoh web HTTP: http://example.com)
 
@@ -450,8 +450,8 @@ Saat akses internet dibuka, client dilarang untuk mengakses web tanpa HTTPS. (Co
     - Aktifkan proxy dengan command `export http_proxy=”http://192.175.2.3:8080”`
     - Ubah waktu menjadi waktu non jam kerja, contoh `date -s “7 nov 2022 18:00”`
     - Test `lynx http://example.com`
-    [image]
+    ![image](https://user-images.githubusercontent.com/100585249/201474010-f979c60c-f745-4876-997c-d42ae25f39f5.png)
     - Test `lynx https://example.com`
-    [image]
+    ![image](https://user-images.githubusercontent.com/100585249/201474025-51d3967d-1926-4393-a4c3-0a43ba14ec1d.png)
   
 
