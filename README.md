@@ -484,6 +484,7 @@ soal
 	delay_parameters 1 none 16000/16000
 
 	```
+	- Restart squid `service squid restart`
 - SSS/Garden
 	- lakukan `unset http_proxy`
 	- install speedtest-cli dengan command `apt install speedtest-cli`
@@ -520,6 +521,7 @@ soal
 	delay_parameters 1 none 16000/16000
 
 	```
+	- Restart squid `service squid restart`
 - SSS/Garden
 	- lakukan `unset http_proxy`
 	- install speedtest-cli dengan command `apt install speedtest-cli`
