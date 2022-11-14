@@ -508,8 +508,8 @@ soal
 	# http_access deny !SSL_ports
 	## Keperluan Testing
 	http_access allow WORKSITES
-	# http_access deny WORKING
-	## Keperluan Testing
+	http_access deny WORKING
+	## Keperluan Testing bisa dimatikan untuk cek respon
 	http_access allow all
 	
 	## Tambahkan ACL
@@ -528,4 +528,10 @@ soal
 	- selanjutnya lakukan command `export PYTHONHTTPSVERIFY=0`
 	- nyalakan kembali http_proxy dengan command `export http_proxy="http://192.175.2.3:8080"`
 	- selanjutnya ubah tanggal sesuai keperluan speed test
-		- ex : `date -s "12 nov 2022 19:00"`
+		- ex : `date -s "12 nov 2022 19:00"
+	|Aksi|Senin 10.00| Senin 18.00 | Sabtu (any)|
+	|---|---|---|---|
+	|Akses internet(HTTP)|x|x|x|
+	|Akses internet (HTTPS)|x|v|v|
+	|Akses loid-work.com dan franky-work.com|v|x|x|
+	|Speed Limit (128Kbps)|no access|x|v|
