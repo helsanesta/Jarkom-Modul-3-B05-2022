@@ -454,4 +454,36 @@ Saat akses internet dibuka, client dilarang untuk mengakses web tanpa HTTPS. (Co
     - Test `lynx https://example.com`
     ![image](https://user-images.githubusercontent.com/100585249/201474025-51d3967d-1926-4393-a4c3-0a43ba14ec1d.png)
   
+### No 4
+soal
+#### Langkah Penyelesaian
+- Berlint
+	- Ubah konfigurasi squid menjadi sebagai berikut `squid.conf`
+	```
+	include /etc/squid/acl.conf
 
+	http_port 8080
+	visible_hostname Berlint
+
+	acl SSL_ports port 443
+	acl WORKSITES dstdomain "/etc/squid/work-sites.acl"
+	# http_access deny !SSL_ports
+	## dimatikan keperluan testing
+	http_access allow WORKSITES
+	# http_access deny WORKING
+	## dimatikan keperluan testing
+	http_access allow all
+
+	delay_pools 1
+	delay_class 1 2
+	delay_access 1 allow all
+	delay_parameters 1 none 16000/16000
+
+	```
+- SSS/Garden
+	- lakukan `unset http_proxy`
+	- install speedtest-cli dengan command `apt install speedtest-cli`
+	- selanjutnya lakukan command `export PYTHONHTTPSVERIFY=0`
+	- nyalakan kembali http_proxy dengan command `export http_proxy="http://192.175.2.3:8080"`
+	- selanjutnya ubah tanggal sesuai keperluan speed test
+		- ex : `date -s "12 nov 2022 19:00"`
