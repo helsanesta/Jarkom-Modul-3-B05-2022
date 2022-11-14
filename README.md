@@ -491,14 +491,13 @@ Agar menghemat penggunaan, akses internet dibatasi dengan kecepatan maksimum 128
 	- selanjutnya lakukan command `export PYTHONHTTPSVERIFY=0`
 	- nyalakan kembali http_proxy dengan command `export http_proxy="http://192.175.2.3:8080"`
 	- selanjutnya ubah tanggal sesuai keperluan speed test
-		- ex : `date -s "12 nov 2022 19:00"`
+		- ex : `date -s "8 nov 2022 10:00"`
 	- run speedtest dengan `speedtest --secure`
+	![WhatsApp Image 2022-11-14 at 20 48 57 (1)](https://user-images.githubusercontent.com/91010605/201677392-4bdc898f-de79-46bc-b07a-56b4d4ac3213.jpeg)
+
 #### res no 4
 Aksi	| Senin 10.00	| Senin 18.00	| Sabtu (any)
 -------------	| -------------	| -------------	| -------------
-Akses internet(HTTP)	| x	| x	| x
-Akses internet (HTTPS)	| x	| v	| v
-Akses loid-work.com dan franky-work.com	| v	| x	| x
 Speed Limit (128Kbps)	| no access(test)	| v	| v
 
 ### No 5
@@ -539,6 +538,8 @@ Setelah diterapkan, ternyata peraturan nomor (4) mengganggu produktifitas saat h
 	- selanjutnya ubah tanggal sesuai keperluan speed test
 		- ex : `date -s "12 nov 2022 19:00"
 	- run speedtest dengan `speedtest --secure`
+	![WhatsApp Image 2022-11-14 at 20 48 57](https://user-images.githubusercontent.com/91010605/201677155-6f4b66ce-869e-46ba-92d9-febdf2f6c0d8.jpeg)
+
 #### res no 5
 Aksi	| Senin 10.00	| Senin 18.00	| Sabtu (any)
 -------------	| -------------	| -------------	| -------------
