@@ -530,9 +530,16 @@ soal
 	- selanjutnya ubah tanggal sesuai keperluan speed test
 		- ex : `date -s "12 nov 2022 19:00"
 <br>
+<hr>
 Aksi | Senin 10.00 | Senin 18.00 | Sabtu (any)
 ------------- | ------------- | ------------- | -------------
 Akses internet(HTTP) | x | x | x
 Akses internet (HTTPS)| x | v | v
 Akses loid-work.com dan franky-work.com | v | x | x
 Speed Limit (128Kbps) | no access | x | v
+
+<hr>
+| FirstName     | LastName      | City     |
+| ------------- | ------------- | -------- |
+| John          | Test1         | NewYork  |
+| Bob           | Test2         | Toronto  |
