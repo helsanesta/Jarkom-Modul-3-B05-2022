@@ -467,10 +467,10 @@ Agar menghemat penggunaan, akses internet dibatasi dengan kecepatan maksimum 128
 
 	acl SSL_ports port 443
 	acl WORKSITES dstdomain "/etc/squid/work-sites.acl"
-	# http_access deny !SSL_ports
+	http_access deny !SSL_ports
 	## dimatikan keperluan testing
 	http_access allow WORKSITES
-	# http_access deny WORKING
+	http_access deny WORKING
 	## dimatikan keperluan testing
 	http_access allow all
 	
@@ -499,7 +499,7 @@ Aksi	| Senin 10.00	| Senin 18.00	| Sabtu (any)
 Akses internet(HTTP)	| x	| x	| x
 Akses internet (HTTPS)	| x	| v	| v
 Akses loid-work.com dan franky-work.com	| v	| x	| x
-Speed Limit (128Kbps)	| v	| v	| v
+Speed Limit (128Kbps)	| no access(test)	| v	| v
 
 ### No 5
 Setelah diterapkan, ternyata peraturan nomor (4) mengganggu produktifitas saat hari kerja, dengan demikian pembatasan kecepatan hanya diberlakukan untuk pengaksesan internet pada hari libur
@@ -545,4 +545,4 @@ Aksi	| Senin 10.00	| Senin 18.00	| Sabtu (any)
 Akses internet(HTTP)	| x	| x	| x
 Akses internet (HTTPS)	| x	| v	| v
 Akses loid-work.com dan franky-work.com	| v	| x	| x
-Speed Limit (128Kbps)	| no access	| x	| v
+Speed Limit (128Kbps)	| no access(test)	| x	| v
