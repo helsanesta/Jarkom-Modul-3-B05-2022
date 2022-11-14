@@ -538,3 +538,10 @@ Akses internet (HTTPS)| x | v | v
 Akses loid-work.com dan franky-work.com | v | x | x
 Speed Limit (128Kbps) | no access | x | v
 </table>
+
+## Anggota 
+Nama            | NRP
+-------------   | -------------
+Helsa Nesta Dhaifullah  | 5025201005
+Achmad Nashruddin Riskynanda    | 5025201021
+Haniif Ahmad Jauhari  | 5025201224
