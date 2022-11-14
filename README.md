@@ -529,6 +529,7 @@ soal
 	- nyalakan kembali http_proxy dengan command `export http_proxy="http://192.175.2.3:8080"`
 	- selanjutnya ubah tanggal sesuai keperluan speed test
 		- ex : `date -s "12 nov 2022 19:00"
+<br>
 Aksi | Senin 10.00 | Senin 18.00 | Sabtu (any)
 ------------- | ------------- | ------------- | -------------
 Akses internet(HTTP) | x | x | x
