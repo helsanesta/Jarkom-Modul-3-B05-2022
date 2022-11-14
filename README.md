@@ -492,6 +492,7 @@ Agar menghemat penggunaan, akses internet dibatasi dengan kecepatan maksimum 128
 	- nyalakan kembali http_proxy dengan command `export http_proxy="http://192.175.2.3:8080"`
 	- selanjutnya ubah tanggal sesuai keperluan speed test
 		- ex : `date -s "12 nov 2022 19:00"`
+	- run speedtest dengan `speedtest --secure`
 #### res no 4
 Aksi	| Senin 10.00	| Senin 18.00	| Sabtu (any)
 -------------	| -------------	| -------------	| -------------
@@ -537,6 +538,7 @@ Setelah diterapkan, ternyata peraturan nomor (4) mengganggu produktifitas saat h
 	- nyalakan kembali http_proxy dengan command `export http_proxy="http://192.175.2.3:8080"`
 	- selanjutnya ubah tanggal sesuai keperluan speed test
 		- ex : `date -s "12 nov 2022 19:00"
+	- run speedtest dengan `speedtest --secure`
 #### res no 5
 Aksi	| Senin 10.00	| Senin 18.00	| Sabtu (any)
 -------------	| -------------	| -------------	| -------------
