@@ -458,7 +458,7 @@ Saat akses internet dibuka, client dilarang untuk mengakses web tanpa HTTPS. (Co
 soal
 #### Langkah Penyelesaian
 - Berlint
-	- Ubah konfigurasi squid menjadi sebagai berikut `squid.conf`
+	- Ubah konfigurasi squid `squid.conf` sebagai berikut
 	```
 	include /etc/squid/acl.conf
 
@@ -473,10 +473,50 @@ soal
 	# http_access deny WORKING
 	## dimatikan keperluan testing
 	http_access allow all
+	
+	# jumlah pool 1
+	delay_pools 1
+	# kelas untuk pool 1 adalah kelas 2
+	delay_class 1 2
+	# allow konfigurasi untuk semua acl
+	delay_access 1 allow all
+	# limit 128Kbit/s maka 16Kbytes/s x 8 = 128Kbit/s
+	delay_parameters 1 none 16000/16000
 
+	```
+- SSS/Garden
+	- lakukan `unset http_proxy`
+	- install speedtest-cli dengan command `apt install speedtest-cli`
+	- selanjutnya lakukan command `export PYTHONHTTPSVERIFY=0`
+	- nyalakan kembali http_proxy dengan command `export http_proxy="http://192.175.2.3:8080"`
+	- selanjutnya ubah tanggal sesuai keperluan speed test
+		- ex : `date -s "12 nov 2022 19:00"`
+### No 5
+soal
+#### Langkah Penyelesaian
+- Berlint
+	- Ubah konfigurasi squid `squid.conf` sebagai berikut
+	```
+	include /etc/squid/acl.conf
+
+	http_port 8080
+	visible_hostname Berlint
+
+	acl SSL_ports port 443
+	acl WORKSITES dstdomain "/etc/squid/work-sites.acl"
+	# http_access deny !SSL_ports
+	## Keperluan Testing
+	http_access allow WORKSITES
+	# http_access deny WORKING
+	## Keperluan Testing
+	http_access allow all
+	
+	## Tambahkan ACL
+	acl OPEN_TIME time MTWHF
 	delay_pools 1
 	delay_class 1 2
-	delay_access 1 allow all
+	## Buat allow menjadi ketika tidak hari kerja karena limitasi di hari kerja dibatalkan
+	delay_access 1 allow !OPEN_TIME
 	delay_parameters 1 none 16000/16000
 
 	```
