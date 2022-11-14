@@ -455,7 +455,7 @@ Saat akses internet dibuka, client dilarang untuk mengakses web tanpa HTTPS. (Co
     ![image](https://user-images.githubusercontent.com/100585249/201474025-51d3967d-1926-4393-a4c3-0a43ba14ec1d.png)
   
 ### No 4
-soal
+Agar menghemat penggunaan, akses internet dibatasi dengan kecepatan maksimum 128 Kbps pada setiap host (Kbps = kilobit per second; lakukan pengecekan pada tiap host, ketika 2 host akses internet pada saat bersamaan, keduanya mendapatkan speed maksimal yaitu 128 Kbps)
 #### Langkah Penyelesaian
 - Berlint
 	- Ubah konfigurasi squid `squid.conf` sebagai berikut
@@ -501,7 +501,7 @@ Akses loid-work.com dan franky-work.com	| v	| x	| x
 Speed Limit (128Kbps)	| v	| v	| v
 
 ### No 5
-soal
+Setelah diterapkan, ternyata peraturan nomor (4) mengganggu produktifitas saat hari kerja, dengan demikian pembatasan kecepatan hanya diberlakukan untuk pengaksesan internet pada hari libur
 #### Langkah Penyelesaian
 - Berlint
 	- Ubah konfigurasi squid `squid.conf` sebagai berikut
@@ -513,7 +513,7 @@ soal
 
 	acl SSL_ports port 443
 	acl WORKSITES dstdomain "/etc/squid/work-sites.acl"
-	# http_access deny !SSL_ports
+	http_access deny !SSL_ports
 	## Keperluan Testing
 	http_access allow WORKSITES
 	http_access deny WORKING
