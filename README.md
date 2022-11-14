@@ -529,7 +529,6 @@ soal
 	- nyalakan kembali http_proxy dengan command `export http_proxy="http://192.175.2.3:8080"`
 	- selanjutnya ubah tanggal sesuai keperluan speed test
 		- ex : `date -s "12 nov 2022 19:00"
-<br>
 ## res
 Aksi	| Senin 10.00	| Senin 18.00	| Sabtu (any)
 -------------	| -------------	| -------------	| -------------
@@ -537,10 +536,3 @@ Akses internet(HTTP)	| x	| x	| x
 Akses internet (HTTPS)	| x	| v	| v
 Akses loid-work.com dan franky-work.com	| v	| x	| x
 Speed Limit (128Kbps)	| no access	| x	| v
-
-## Anggota 
-Nama            | NRP
--------------   | -------------
-Helsa Nesta Dhaifullah  | 5025201005
-Achmad Nashruddin Riskynanda    | 5025201021
-Haniif Ahmad Jauhari  | 5025201224
